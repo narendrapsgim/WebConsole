@@ -15,26 +15,18 @@
     <fileset dir="war/WEB-INF/lib" includes="**/*.jar"/>
   </path>
 
-  <target name="find_revision" description="Sets property 'revision.number' to the head svn revision">
-        <property name="revision" value="COMMITTED"/>
-
-		<!-- find out svn.revision need svn.exe installed on local machine will en up in property ${Revision} -->
-<!--		<exec executable="svn">
-            <arg line="update"/>
-        </exec> -->
-        <exec executable="svn" output="svnlog.out">
-            <arg line="info -r ${revision}"/>
-        </exec>
-		<loadproperties srcFile="svnlog.out">
-		      <filterchain>
-		        <linecontains>
-		          <contains value="Revision"/>
-		        </linecontains>
-		      </filterchain>
-		</loadproperties>
-		<delete file="svnlog.out"/>
+  <target name="find_revision" description="Sets property 'Revision' to the Git HEAD hash">
+    <exec executable="git" output="hash.out">
+      <arg line="rev-parse --short HEAD"/>
+    </exec>
+    <loadfile property="Revision" srcFile="hash.out">
+      <filterchain>
+        <filterreader classname="org.apache.tools.ant.filters.StripLineBreaks"/>
+      </filterchain>
+    </loadfile>
+    <delete file="hash.out"/>
 		
-		<fail message="Failed to get revision info from SVN">
+		<fail message="Failed to get hash from Git">
 			<condition>
 				<not>
 					<isset property="Revision"/>
