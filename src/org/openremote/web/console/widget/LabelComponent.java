@@ -44,7 +44,7 @@ public class LabelComponent extends PassiveConsoleComponent implements SensorCha
 	}
 	
 	public void setText(String text) {
-		((Label)getWidget()).setText(text);
+		((Label)getWidget()).setText(unescapeHtmlEntities(text));
 	}
 	
 	public void setColor(String color) {
@@ -127,4 +127,16 @@ public class LabelComponent extends PassiveConsoleComponent implements SensorCha
 		component.setFontSize(entity.getFontSize());
 		return component;
 	}
+
+    protected static String unescapeHtmlEntities(String s) {
+        // For some reason, the controller sends us HTML entities in some values...
+        // TODO: This is a dirty hack to fix this for some know chars
+        return s
+            .replaceAll("&#162;", "¢")
+            .replaceAll("&#163;", "£")
+            .replaceAll("&#165;", "¥")
+            .replaceAll("&#176;", "°")
+            .replaceAll("&#8364;", "€");
+    }
+
 }
