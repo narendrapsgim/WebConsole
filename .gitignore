@@ -1,3 +1,5 @@
 war
 output
 gwt-unitCache
+*.iml
+.idea

@@ -57,7 +57,7 @@ public class ImageComponent extends PassiveConsoleComponent implements SensorCha
 	}
 	
 	public void setInitialImage(String src) {
-		String url = WebConsole.getConsoleUnit().getControllerService().getController().getUrl();
+		String url = WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl();
 		url += src;
 		initialImage = WebConsole.getConsoleUnit().getImageFromCache(url);
 		initialImage.addCallback(loadedCallback);
@@ -97,7 +97,7 @@ public class ImageComponent extends PassiveConsoleComponent implements SensorCha
 		Map<String, String> map = sensor.getStateMap();
 		for (String name : map.keySet()) {
 			String value = map.get(name);
-			String url = WebConsole.getConsoleUnit().getControllerService().getController().getUrl();
+			String url = WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl();
 			url += value;
 			ImageContainer container = WebConsole.getConsoleUnit().getImageFromCache(url);
 			container.addCallback(loadedCallback);

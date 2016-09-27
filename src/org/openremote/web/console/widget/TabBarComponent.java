@@ -130,7 +130,7 @@ public class TabBarComponent extends InteractiveConsoleComponent implements Scre
 				if (isSystemImage) {
 					imagePath = BrowserUtils.getSystemImageDir() + tabImage.getSrc();
 				} else {
-					imagePath = WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + tabImage.getSrc();
+					imagePath = WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + tabImage.getSrc();
 				}
 				
 				DOM.setStyleAttribute(elem, "backgroundImage", "url(" + imagePath + ")");

@@ -171,7 +171,7 @@ public class ButtonComponent extends InteractiveConsoleComponent implements Pres
 				if (img.getSystemImage() != null && img.getSystemImage()) {
 					src = BrowserUtils.getSystemImageDir() + src;
 				} else {
-					src = WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + src;
+					src = WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + src;
 				}
 				component.defaultImageContainer = WebConsole.getConsoleUnit().getImageFromCache(src);
 			}
@@ -183,7 +183,7 @@ public class ButtonComponent extends InteractiveConsoleComponent implements Pres
 			if (img.getSystemImage() != null && img.getSystemImage()) {
 				src = BrowserUtils.getSystemImageDir() + src;
 			} else {
-				src = WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + src;
+				src = WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + src;
 			}
 			component.pressedImageContainer = WebConsole.getConsoleUnit().getImageFromCache(src);
 		}

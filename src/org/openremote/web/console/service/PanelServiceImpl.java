@@ -485,7 +485,7 @@ public class PanelServiceImpl implements PanelService {
 								if (item.getImage().getSystemImage() != null && item.getImage().getSystemImage()) {
 									imageUrls.add(BrowserUtils.getSystemImageDir() + item.getImage().getSrc());
 								} else {
-									imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + item.getImage().getSrc());
+									imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + item.getImage().getSrc());
 								}
 							}
 						}
@@ -503,7 +503,7 @@ public class PanelServiceImpl implements PanelService {
 						if (item.getImage().getSystemImage() != null && item.getImage().getSystemImage()) {
 							imageUrls.add(BrowserUtils.getSystemImageDir() + item.getImage().getSrc());
 						} else {
-							imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + item.getImage().getSrc());
+							imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + item.getImage().getSrc());
 						}
 					}
 				}
@@ -555,12 +555,12 @@ public class PanelServiceImpl implements PanelService {
 	private void processImageComponentElement(ImageComponent img, Set<String> imageUrls) {
 		if (img != null) {
 			// Check src and check link
-			if (img.getSrc() != null) imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + img.getSrc());
+			if (img.getSrc() != null) imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + img.getSrc());
 			if (img.getLink() != null) {
 				List<StateMap> stateMap = img.getLink().getState();
 				if (stateMap != null) {
 					for (StateMap state : stateMap) {
-						imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + state.getValue());
+						imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + state.getValue());
 					}
 				}
 			}
@@ -573,14 +573,14 @@ public class PanelServiceImpl implements PanelService {
 				if (btn.getDefault().getImage().getSystemImage() != null && btn.getDefault().getImage().getSystemImage()) {
 					imageUrls.add(BrowserUtils.getSystemImageDir() + btn.getDefault().getImage().getSrc());
 				} else {
-					imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + btn.getDefault().getImage().getSrc());
+					imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + btn.getDefault().getImage().getSrc());
 				}
 			}
 			if (btn.getPressed() != null && btn.getPressed().getImage() != null) {
 				if (btn.getPressed().getImage().getSystemImage() != null && btn.getPressed().getImage().getSystemImage()) {
 					imageUrls.add(BrowserUtils.getSystemImageDir() + btn.getPressed().getImage().getSrc());
 				} else {
-					imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + btn.getPressed().getImage().getSrc());
+					imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + btn.getPressed().getImage().getSrc());
 				}
 			}
 		}
@@ -591,7 +591,7 @@ public class PanelServiceImpl implements PanelService {
 			if (swtch.getLink() != null) {
 				if (swtch.getLink().getState() != null) {
 					for(StateMap map : swtch.getLink().getState()) {
-							imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + map.getValue());
+							imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + map.getValue());
 					}
 				}
 			}
@@ -600,16 +600,16 @@ public class PanelServiceImpl implements PanelService {
 	
 	private void processSliderElement(SliderComponent slider, Set<String> imageUrls) {
 		if (slider != null) {
-			if (slider.getThumbImage() != null) imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + slider.getThumbImage());
+			if (slider.getThumbImage() != null) imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + slider.getThumbImage());
 			SliderMinMax max = slider.getMax();
 			SliderMinMax min = slider.getMin();
 			if (max != null) {
-				if (max.getImage() != null) imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + max.getImage());
-				if (max.getTrackImage() != null) imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + max.getTrackImage());
+				if (max.getImage() != null) imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + max.getImage());
+				if (max.getTrackImage() != null) imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + max.getTrackImage());
 			}
 			if (min != null) {
-				if (min.getImage() != null) imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + min.getImage());
-				if (min.getTrackImage() != null) imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + min.getTrackImage());
+				if (min.getImage() != null) imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + min.getImage());
+				if (min.getTrackImage() != null) imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + min.getTrackImage());
 			}
 		}
 	}
@@ -619,7 +619,7 @@ public class PanelServiceImpl implements PanelService {
 			if (img.getSystemImage() != null && img.getSystemImage()) {
 				imageUrls.add(BrowserUtils.getSystemImageDir() + img.getSrc());
 			} else {
-				imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getUrl() + img.getSrc());
+				imageUrls.add(WebConsole.getConsoleUnit().getControllerService().getController().getResourcesUrl() + img.getSrc());
 			}
 		}
 	}

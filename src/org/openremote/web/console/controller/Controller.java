@@ -205,6 +205,10 @@ public class Controller implements ControllerCredentials {
 		//if (username.length() > 0) return "http://" + username + ":" + password + "@" + url.substring(7);
 		return url;
 	}
+
+    public String getResourcesUrl() {
+        return getUrl() + "resources/";
+    }
 	
 	public void setUrl(String url) {
 		if (url.indexOf("https://") == 0) setEncrypted(true);

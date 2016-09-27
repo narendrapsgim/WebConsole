@@ -110,7 +110,7 @@ public class ScreenViewImpl extends ConsoleComponentImpl implements ScreenView {
 		// Get Image Container from cache
 		if (entity.getImage() != null) {
 			ConsoleUnit unit = WebConsole.getConsoleUnit();
-			background = unit.getImageFromCache(unit.getControllerService().getController().getUrl() + entity.getImage().getSrc());
+			background = unit.getImageFromCache(unit.getControllerService().getController().getResourcesUrl() + entity.getImage().getSrc());
 			if (background != null) {
 				((AbsolutePanel)getWidget()).add(background.getImage(), 0, 0);
 				DOM.setStyleAttribute(background.getImage().getElement(),"zIndex", "-1");

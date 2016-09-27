@@ -544,7 +544,7 @@ public class SliderComponent extends InteractiveConsoleComponent implements Sens
 	public void setThumbImage(String src) {
 		if (src != null && !src.equals("")) {
 			ConsoleUnit consoleUnit = WebConsole.getConsoleUnit();
-			String url = consoleUnit.getControllerService().getController().getUrl();
+			String url = consoleUnit.getControllerService().getController().getResourcesUrl();
 			url += src;
 			this.thumbImage = consoleUnit.getImageFromCache(url);
 		}
@@ -556,14 +556,14 @@ public class SliderComponent extends InteractiveConsoleComponent implements Sens
 		String minImage = min.getImage();
 		if (minImage != null && !minImage.equals("")) {
 			ConsoleUnit consoleUnit = WebConsole.getConsoleUnit();
-			String url = consoleUnit.getControllerService().getController().getUrl();
+			String url = consoleUnit.getControllerService().getController().getResourcesUrl();
 			url += minImage;
 			this.minImage = consoleUnit.getImageFromCache(url);
 		}
 		String minTrackImage = min.getTrackImage();
 		if (minTrackImage != null && !minTrackImage.equals("")) {
 			ConsoleUnit consoleUnit = WebConsole.getConsoleUnit();
-			String url = consoleUnit.getControllerService().getController().getUrl();
+			String url = consoleUnit.getControllerService().getController().getResourcesUrl();
 			url += minTrackImage;
 			this.minTrackImage = consoleUnit.getImageFromCache(url);
 		}
@@ -575,14 +575,14 @@ public class SliderComponent extends InteractiveConsoleComponent implements Sens
 		String maxImage = max.getImage();
 		if (maxImage != null && !maxImage.equals("")) {
 			ConsoleUnit consoleUnit = WebConsole.getConsoleUnit();
-			String url = consoleUnit.getControllerService().getController().getUrl();
+			String url = consoleUnit.getControllerService().getController().getResourcesUrl();
 			url += maxImage;
 			this.maxImage = consoleUnit.getImageFromCache(url);
 		}
 		String maxTrackImage = max.getTrackImage();
 		if (maxTrackImage != null && !maxTrackImage.equals("")) {
 			ConsoleUnit consoleUnit = WebConsole.getConsoleUnit();
-			String url = consoleUnit.getControllerService().getController().getUrl();
+			String url = consoleUnit.getControllerService().getController().getResourcesUrl();
 			url += maxTrackImage;
 			this.maxTrackImage = consoleUnit.getImageFromCache(url);
 		}
