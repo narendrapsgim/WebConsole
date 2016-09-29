@@ -22,6 +22,7 @@ package org.openremote.web.console.client;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.google.gwt.dom.client.Document;
 import org.openremote.web.console.controller.ControllerCredentials;
 import org.openremote.web.console.panel.entity.PanelSizeInfo;
 import org.openremote.web.console.panel.entity.WelcomeFlag;
@@ -45,23 +46,24 @@ import com.google.gwt.user.client.ui.RootPanel;
  * and determines the size of the window we have to work with:
  * windowHeight = Longest window dimension (i.e. portrait)
  * windowWidth = Shortest window dimension
- * 
+ *
  * @author <a href="mailto:richard@openremote.org">Richard Turner</a>
  */
 public class WebConsole implements EntryPoint {
 	private static ConsoleUnit consoleUnit;
 	public static final String WELCOME_MESSAGE_STRING = "Welcome to the latest Web Console!\n\nClick <a href=\"http://openremote.org/display/docs/Web+Console\" target=\"_blank\">here</a> for release notes and help on using the Web Console.";
 	public static final String COOKIE_WARNING_MESSAGE_STRING = "Cookies / Local Storage must be enabled for the Web Console to work correctly!";
-	private Logger logger = Logger.getLogger("");
-	
-	public void onModuleLoad() {
-		
-		// Create Exception alert
-		GWT.setUncaughtExceptionHandler(new   
-	      GWT.UncaughtExceptionHandler() {  
+
+    private static final Logger LOG = Logger.getLogger(WebConsole.class.getName());
+
+    public void onModuleLoad() {
+
+        // Create Exception alert
+		GWT.setUncaughtExceptionHandler(new
+	      GWT.UncaughtExceptionHandler() {
 	      public void onUncaughtException(Throwable e) {
 	      	Throwable unwrapped = unwrap(e);
-	      	logger.log(Level.SEVERE, "Ex caught!", e);
+	      	LOG.log(Level.SEVERE, "Ex caught!", e);
 	    }
 		});
 		
@@ -103,12 +105,19 @@ public class WebConsole implements EntryPoint {
     if (BrowserUtils.showToolbar()) {
       SlidingToolbar.initialise(sizeInfo);
     }
-    
+
+    // Change host page background color
+    String backgroundColor = Window.Location.getParameter("backgroundColor");
+    if (backgroundColor != null && !backgroundColor.isEmpty()) {
+        backgroundColor = "#" + backgroundColor.replaceAll("[^a-f0-9]", ""); // Prevent XSS!
+        Document.get().getBody().getStyle().setBackgroundColor(backgroundColor);
+    }
+
     // Configure the default panel and controller
     // Check for GET variables
     String cUrl = Window.Location.getParameter("controllerURL");
     String pName = Window.Location.getParameter("panelName");
-    
+
     if (cUrl == null || cUrl.isEmpty())
     {
       cUrl = BrowserUtils.getControllerUrlString();

@@ -456,7 +456,7 @@ import com.google.web.bindery.autobean.shared.AutoBean;
 		  
 		  String param = Window.Location.getParameter("showWelcome");
 		  
-		  if (param == null || (!param.equalsIgnoreCase("true") && param.equalsIgnoreCase("false"))) {
+		  if (param == null || (!param.equalsIgnoreCase("true") && !param.equalsIgnoreCase("false"))) {
 		    param = getShowWelcomeString();
 		  }
 
