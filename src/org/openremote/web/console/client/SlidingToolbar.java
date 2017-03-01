@@ -142,7 +142,7 @@ public class SlidingToolbar extends Composite implements KeyUpHandler, BlurHandl
 	private void createToolbarContent(PanelSizeInfo sizeInfo) {
 		// Create Toolbar Content
 		HTML title = new HTML();
-		title.setHTML("<span>OpenRemote</span><br /><span>Web Console 2.0</span>");
+		title.setHTML("<span>OpenRemote</span><br /><span>Web Console 2.1.5</span>");
 		title.setWidth("100%");
 		title.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		title.setStylePrimaryName("title");
