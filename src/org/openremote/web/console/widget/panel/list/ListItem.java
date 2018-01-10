@@ -230,7 +230,9 @@ public class ListItem extends PanelComponent implements Interactive, TapHandler,
 
 	@Override
 	public void onMouseMove(MouseMoveEvent event) {
-		if (startEvent != null) {
+        // There's a weird bug in Chrome on Windows 10 64bit that causes a mouse move event to fire on mouse down so this tries to workaround it
+        // https://bugs.chromium.org/p/chromium/issues/detail?id=721341
+		if (startEvent != null && (startEvent.getClientX() != event.getClientX() || startEvent.getClientY() != event.getClientY())) {
 			event.preventDefault();
 			event.stopPropagation();
 			propagateEvent(new PressMoveEvent(event));
